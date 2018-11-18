@@ -1049,13 +1049,14 @@ namespace ICSharpCode.AvalonEdit.Rendering
 			p.cultureInfo = CultureInfo.CurrentCulture;
 			return p;
 		}
-		
-		VisualLineTextParagraphProperties CreateParagraphProperties(TextRunProperties defaultTextRunProperties)
-		{
+
+		VisualLineTextParagraphProperties CreateParagraphProperties(TextRunProperties defaultTextRunProperties) {
 			return new VisualLineTextParagraphProperties {
 				defaultTextRunProperties = defaultTextRunProperties,
 				textWrapping = canHorizontallyScroll ? TextWrapping.NoWrap : TextWrapping.Wrap,
-				tabSize = Options.IndentationSize * WideSpaceWidth
+				tabSize = Options.IndentationSize * WideSpaceWidth,
+				textAlignment = Options.Alignment,
+				lineHeight = Options.LineHeight,
 			};
 		}
 		
@@ -1101,8 +1102,6 @@ namespace ICSharpCode.AvalonEdit.Rendering
 			var textLines = new List<TextLine>();
 			paragraphProperties.indent = 0;
 			paragraphProperties.firstLineInParagraph = true;
-			paragraphProperties.textAlignment = Options.Alignment;
-			paragraphProperties.lineHeight = Options.LineHeight;
 			if (paragraphProperties.textAlignment == TextAlignment.Right)
 				availableSize.Width -= 2; // to contain the cursor.
 
