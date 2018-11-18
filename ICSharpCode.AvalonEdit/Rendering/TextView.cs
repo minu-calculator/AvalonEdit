@@ -1101,6 +1101,11 @@ namespace ICSharpCode.AvalonEdit.Rendering
 			var textLines = new List<TextLine>();
 			paragraphProperties.indent = 0;
 			paragraphProperties.firstLineInParagraph = true;
+			paragraphProperties.textAlignment = Options.Alignment;
+			paragraphProperties.lineHeight = Options.LineHeight;
+			if (paragraphProperties.textAlignment == TextAlignment.Right)
+				availableSize.Width -= 2; // to contain the cursor.
+
 			while (textOffset <= visualLine.VisualLengthWithEndOfLineMarker) {
 				TextLine textLine = formatter.FormatLine(
 					textSource,

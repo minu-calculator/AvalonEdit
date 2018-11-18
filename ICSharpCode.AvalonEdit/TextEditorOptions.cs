@@ -20,6 +20,7 @@ using System;
 using System.ComponentModel;
 using System.Reflection;
 using System.Text;
+using System.Windows;
 
 namespace ICSharpCode.AvalonEdit
 {
@@ -490,6 +491,38 @@ namespace ICSharpCode.AvalonEdit
 				if (allowToggleOverstrikeMode != value) {
 					allowToggleOverstrikeMode = value;
 					OnPropertyChanged("AllowToggleOverstrikeMode");
+				}
+			}
+		}
+
+		TextAlignment alignment = TextAlignment.Left;
+
+		/// <summary>
+		/// Gets/Sets the alignment mode of the editor.
+		/// </summary>
+		[DefaultValue(false)]
+		public TextAlignment Alignment {
+			get { return alignment; }
+			set {
+				if (alignment != value) {
+					alignment = value;
+					OnPropertyChanged("Alignment");
+				}
+			}
+		}
+
+		double lineHeight = double.NaN;
+
+		/// <summary>
+		/// Gets/Sets the line height.
+		/// </summary>
+		[DefaultValue(false)]
+		public double LineHeight {
+			get { return lineHeight; }
+			set {
+				if (lineHeight != value) {
+					lineHeight = value;
+					OnPropertyChanged("LineHeight");
 				}
 			}
 		}

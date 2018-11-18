@@ -26,6 +26,8 @@ namespace ICSharpCode.AvalonEdit.Rendering
 	{
 		internal TextRunProperties defaultTextRunProperties;
 		internal TextWrapping textWrapping;
+		internal TextAlignment textAlignment = TextAlignment.Left;
+		internal double lineHeight = double.NaN;
 		internal double tabSize;
 		internal double indent;
 		internal bool firstLineInParagraph;
@@ -35,8 +37,8 @@ namespace ICSharpCode.AvalonEdit.Rendering
 		}
 		
 		public override FlowDirection FlowDirection { get { return FlowDirection.LeftToRight; } }
-		public override TextAlignment TextAlignment { get { return TextAlignment.Left; } }
-		public override double LineHeight { get { return double.NaN; } }
+		public override TextAlignment TextAlignment { get { return textAlignment; } }
+		public override double LineHeight { get { return lineHeight; } }
 		public override bool FirstLineInParagraph { get { return firstLineInParagraph; } }
 		public override TextRunProperties DefaultTextRunProperties { get { return defaultTextRunProperties; } }
 		public override TextWrapping TextWrapping { get { return textWrapping; } }

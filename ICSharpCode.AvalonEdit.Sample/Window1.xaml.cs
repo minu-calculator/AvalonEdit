@@ -70,7 +70,10 @@ namespace ICSharpCode.AvalonEdit.Sample
 			textEditor.TextArea.TextEntering += textEditor_TextArea_TextEntering;
 			textEditor.TextArea.TextEntered += textEditor_TextArea_TextEntered;
 			SearchPanel.Install(textEditor);
-			
+
+			textEditor.TextArea.TextView.Options.Alignment = TextAlignment.Right;
+			textEditor.TextArea.TextView.Options.LineHeight = 100;
+
 			DispatcherTimer foldingUpdateTimer = new DispatcherTimer();
 			foldingUpdateTimer.Interval = TimeSpan.FromSeconds(2);
 			foldingUpdateTimer.Tick += delegate { UpdateFoldings(); };
