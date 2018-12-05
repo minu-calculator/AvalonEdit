@@ -363,14 +363,18 @@ namespace ICSharpCode.AvalonEdit.CodeCompletion
 			//		2 = match substring
 			//		1 = match CamelCase
 			//		-1 = no match
-			if (query == itemText)
+			var cquary = "[" + query;
+			if (query == itemText || cquary == itemText)
 				return 8;
-			if (string.Equals(itemText, query, StringComparison.InvariantCultureIgnoreCase))
+			if (string.Equals(itemText, query, StringComparison.InvariantCultureIgnoreCase)
+			|| string.Equals(itemText, cquary, StringComparison.InvariantCultureIgnoreCase))
 				return 7;
 			
-			if (itemText.StartsWith(query, StringComparison.InvariantCulture))
+			if (itemText.StartsWith(query, StringComparison.InvariantCulture)
+			|| itemText.StartsWith(cquary, StringComparison.InvariantCulture))
 				return 6;
-			if (itemText.StartsWith(query, StringComparison.InvariantCultureIgnoreCase))
+			if (itemText.StartsWith(query, StringComparison.InvariantCultureIgnoreCase)
+			|| itemText.StartsWith(cquary, StringComparison.InvariantCultureIgnoreCase))
 				return 5;
 			
 			bool? camelCaseMatch = null;
