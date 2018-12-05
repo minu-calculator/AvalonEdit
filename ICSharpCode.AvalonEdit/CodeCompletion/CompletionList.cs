@@ -352,7 +352,10 @@ namespace ICSharpCode.AvalonEdit.CodeCompletion
 		{
 			if (itemText == null)
 				throw new ArgumentNullException("itemText", "ICompletionData.Text returned null");
-			
+
+			if (query.Contains('_'))
+				return (from i in query.Split('_') select GetMatchQuality(itemText, i)).Min();
+
 			// Qualities:
 			//  	8 = full match case sensitive
 			// 		7 = full match
