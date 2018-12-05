@@ -262,7 +262,8 @@ namespace ICSharpCode.AvalonEdit.CodeCompletion
 			
 			var matchingItems =
 				from item in listToFilter
-				let quality = GetMatchQuality(item.Text, query)
+				let quality = Math.Max(GetMatchQuality(item.Text, query),
+					GetMatchQuality(item.Description.ToString(), query))
 				where quality > 0
 				select new { Item = item, Quality = quality };
 			
